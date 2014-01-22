@@ -17,8 +17,14 @@ if __name__ == '__main__':
     log.startLogging(sys.stdout)
 
     port = int(sys.argv[1])
-    print "Setting websocket port %d" % ( port )
-    factory = WebSocketServerFactory("ws://localhost:%d" % ( port ), debug = False)
+    binding = port
+    if (len(sys.argv) > 2):
+        binding = int(sys.argv[2])
+
+    print "Setting websocket port %d=>%d(bind)" % ( port, binding )
+    factory = WebSocketServerFactory("ws://localhost:%d" % ( binding ),
+                                     externalPort = port,
+                                     debug = False)
     factory.protocol = EchoServerProtocol
 
     listenWS(factory)

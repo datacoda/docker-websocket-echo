@@ -1,4 +1,5 @@
-from autobahn.websocket import WebSocketServerProtocol
+from autobahn.twisted.websocket import WebSocketServerProtocol, \
+    WebSocketServerFactory
 
 
 class EchoServerProtocol(WebSocketServerProtocol):
@@ -10,7 +11,6 @@ class EchoServerProtocol(WebSocketServerProtocol):
 if __name__ == '__main__':
     import sys
 
-    from autobahn.websocket import listenWS, WebSocketServerFactory
     from twisted.python import log
     from twisted.internet import reactor
 
@@ -27,5 +27,5 @@ if __name__ == '__main__':
                                      debug = False)
     factory.protocol = EchoServerProtocol
 
-    listenWS(factory)
+    reactor.listenTCP(port, factory)
     reactor.run()

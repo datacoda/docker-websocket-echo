@@ -1,0 +1,10 @@
+.git
+.gitignore
+.vagrant
+.idea
+host
+LICENSE
+VERSION
+README.md
+CHANGELOG.md
+Vagrantfile

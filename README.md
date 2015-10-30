@@ -24,4 +24,4 @@ docker run -expose 80 dataferret/websocket 80
 License
 -------
 
-Apache 2.0
+MIT
